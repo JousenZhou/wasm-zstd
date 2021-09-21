@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <script src="https://unpkg.com/flyio/dist/fly.min.js"></script>
+    <script type="module" >
+      import zstd from '/javascripts/zstd.js';
+
+      let instance = new zstd();
+
+      let fly = new Fly();
+      fly.interceptors.response.use(
+              async response => {
+                // 检测响应头Content-Encoding = zstd 执行解压算法
+                if(response.headers['content-encoding'] === 'zstd'){
+                  response.data = await instance.decompression(response.data)
+                }
+                //只将请求结果的data字段返回
+                return response.data
+              }
+      )
+     setTimeout(async()=>{
+       // 正常数据请求
+       console.log('正常数据请求测试：')
+       console.time()
+       let res = await fly.post('/orginal')
+       console.log(res);
+       console.timeEnd();
+
+       //zstd数据测试
+       console.log('zstd数据请求测试：')
+       console.time()
+       let res2 = await fly.post('/wasm')
+       console.log(res2);
+       console.timeEnd();
+     },1000)
+    </script>
+  </body>
+</html>
