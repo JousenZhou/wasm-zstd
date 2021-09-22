@@ -81,6 +81,13 @@ onmessage = function(evt){
 };
 ```
 
+### 服务端压缩数据简易代码
+#### Java:
+<img src="./static/5.jpg" alt="5494980-14542950db892d9f" style="zoom:50%;" />
+#### php:
+<img src="./static/4.png" alt="5494980-14542950db892d9f" style="zoom:50%;" />
+
+
 ### 测试结果
 ps:不要在本地测试没意义;
 
