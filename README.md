@@ -17,17 +17,17 @@
 
 
 ### Usage 
-开发，构建和运行。ps: ( ！！！) 需要启动php服务
+开发，构建和运行。ps: ( ！！！) 需要启动go服务
 
 ```bash
 # 获取远程仓库代码
 git clone https://github.com/JousenZhou/wasm-zstd
 # 进入目录
 cd wasm-zstd
-# 解压PHP服务端[命令不行手动解压吧]
-unrar e ./phpServer/phpServer.rar ./phpServer
-# 打开执行php服务.exe
-./phpServer/phpServer.exe
+# 解压go服务端[命令不行手动解压吧]
+unrar e ./GoServer/GoServer.rar ./GoServer
+# 打开执行Go服务.exe
+./GoServer/GoServer.exe
 # 安装依赖
 yarn
 # 启动项目
@@ -84,7 +84,7 @@ onmessage = function(evt){
 ### 服务端压缩数据简易代码
 Java:
 <p><img src="./static/5.jpg" alt="5494980-14542950db892d9f" style="zoom:50%;" /></p>
-Php:
+Go:
 <p><img src="./static/4.png" alt="5494980-14542950db892d9f" style="zoom:50%;" /></p>
 
 ### 测试结果
