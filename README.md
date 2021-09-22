@@ -17,7 +17,7 @@
 
 
 ### Usage 
-开发，构建和运行。
+开发，构建和运行。ps: ( ！！！) 需要启动php服务
 
 ```bash
 # 获取远程仓库代码
@@ -39,11 +39,11 @@ yarn devstart
 
 服务端发送数据前用zstd将数据进行一次压缩，代替服务端可配置的gzip压缩。zstd是近几年谷歌新推出的压缩算法拥有不错的压缩率|压缩时间，相较于gzip有约近5~10倍提升。由于压缩后得到是Uint8Array数组结果集，所以前端需要对这份数据进行解压。前端如果在javeScrtpt层进行解压效率会很低，因为javeScript运行会转成c++再编译，在这转换过程性能会大量损耗。因此Webassembly技术将可解决这个难题。
 
-<img src="./static/1.jpg" alt="5494980-14542950db892d9f" style="zoom:50%;" />
+<img src="./static/1.jpg" alt="5494980-14542950db892d9f" width="500px" />
 
 ### 多线程挂载wasm模块 + 数据解压 
 
-```
+```js
 // zstd-wasm base64编码
 let wasm = 'xxx'
 let heap,instance;
@@ -82,16 +82,17 @@ onmessage = function(evt){
 ```
 
 ### 服务端压缩数据简易代码
-#### Java:
-<img src="./static/5.jpg" alt="5494980-14542950db892d9f" style="zoom:50%;" />
-#### php:
-<img src="./static/4.png" alt="5494980-14542950db892d9f" style="zoom:50%;" />
-
+Java:
+<p><img src="./static/5.jpg" alt="5494980-14542950db892d9f" style="zoom:50%;" /></p>
+Php:
+<p><img src="./static/4.png" alt="5494980-14542950db892d9f" style="zoom:50%;" /></p>
 
 ### 测试结果
 ps:不要在本地测试没意义;
 
 外网测试：
-<img src="./static/3.jpg" alt="5494980-14542950db892d9f" style="zoom:50%;" />
-<img src="./static/2.jpg" alt="5494980-14542950db892d9f" style="zoom:50%;" />
+<div>
+<img src="./static/3.png" alt="5494980-14542950db892d9f" style="zoom:50%;" />
+<img src="./static/2.png" alt="5494980-14542950db892d9f" style="zoom:50%;" />
+</div>
 
